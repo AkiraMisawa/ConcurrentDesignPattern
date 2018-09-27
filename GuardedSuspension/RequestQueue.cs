@@ -1,50 +1,34 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Threading;
 
 namespace GuardedSuspension
 {
     public class RequestQueue
     {
-        private object lockObj = new object();
-        private Queue<Request> Queue { get; set; }
+        private ConcurrentQueue<Request> Queue { get; set; }
 
         public RequestQueue()
         {
-            Queue = new Queue<Request>();
+            Queue = new ConcurrentQueue<Request>();
         }
 
         public Request GetRequest()
         {
-            lock (lockObj)
+            Request req = null;
+            while (!Queue.TryPeek(out req))
             {
-                Console.WriteLine($"Thread-{Thread.CurrentThread.ManagedThreadId} is getting request.");
-                while (Queue.Count == 0)
-                {
-                    try
-                    {
-                        Console.WriteLine("Now RequestQueue is empty, so waiting this object's state will be changed.");
-                        Monitor.Wait(lockObj);
-                    }
-                    catch (ThreadInterruptedException e)
-                    {
-                        Console.WriteLine("ThreadInterruptedException is caught.");
-                        Console.WriteLine(e.Message);
-                    }
-                }
 
-                return Queue.Dequeue();
             }
+            Queue.TryDequeue(out req);
+
+            return req;
         }
 
         public void PutRequest(Request request)
         {
-            Console.WriteLine($"Thread-{Thread.CurrentThread.ManagedThreadId} is putting request.");
-            lock (lockObj)
-            {
-                Queue.Enqueue(request);
-                Monitor.PulseAll(lockObj);
-            }
+            Queue.Enqueue(request);
         }
     }
 }
