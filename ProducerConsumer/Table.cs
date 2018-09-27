@@ -15,8 +15,6 @@ namespace ProducerConsumer
 
         private int Head { get; set; }
 
-        private int Capacity { get; }
-
         /// <summary>
         /// The number of cakes which is in this table.
         /// </summary>
@@ -24,7 +22,6 @@ namespace ProducerConsumer
 
         public Table(int capacity)
         {
-            Capacity = capacity;
             CakeBuffer = new List<string>(capacity);
             Head = 0;
             Tail = 0;
@@ -37,7 +34,7 @@ namespace ProducerConsumer
             {
                 Console.WriteLine($"{Thread.CurrentThread.Name} puts {cake}");
                 // You can't put a cake to this table when #cakes >= capacity.
-                while (Count >= Capacity)
+                while (Count >= CakeBuffer.Capacity)
                 {
                     Monitor.Wait(Locker);
                 }
