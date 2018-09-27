@@ -3,6 +3,9 @@ using System.Threading;
 
 namespace ProducerConsumer
 {
+    /// <summary>
+    /// This has consumer role.
+    /// </summary>
     public class EaterThread
     {
         private Random Random { get; }

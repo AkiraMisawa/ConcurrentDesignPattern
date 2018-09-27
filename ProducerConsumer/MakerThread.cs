@@ -3,6 +3,9 @@ using System.Threading;
 
 namespace ProducerConsumer
 {
+    /// <summary>
+    /// This has producer role.
+    /// </summary>
     public class MakerThread
     {
         private static object LockObj { get; } = new object();

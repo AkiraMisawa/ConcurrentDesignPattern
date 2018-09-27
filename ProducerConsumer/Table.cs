@@ -5,6 +5,9 @@ using System.Threading;
 
 namespace ProducerConsumer
 {
+    /// <summary>
+    /// This has channel role.
+    /// </summary>
     public class Table
     {
         private object Locker { get; } = new object();
