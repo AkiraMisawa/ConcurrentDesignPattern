@@ -11,8 +11,23 @@ namespace GuardedSuspension
             var client = new ClientThread(requestQueue, "Alice", 3141592);
             var server = new ServerThread(requestQueue, "Bobby", 6535897);
 
-            new Thread(new ThreadStart(client.Run)).Start();
-            new Thread(new ThreadStart(server.Run)).Start();
+            var clientThread = new Thread(new ThreadStart(client.Run));
+            var serverThread = new Thread(new ThreadStart(server.Run));
+            clientThread.Start();
+            serverThread.Start();
+
+            try
+            {
+                Thread.Sleep(10000);
+            }
+            catch (ThreadInterruptedException e)
+            {
+                Console.WriteLine($"caught in Main thread: {e.Message}");
+            }
+
+            Console.WriteLine("***** calling interrupt *****");
+            clientThread.Interrupt();
+            serverThread.Interrupt();
         }
     }
 }

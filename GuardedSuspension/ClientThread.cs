@@ -18,19 +18,19 @@ namespace GuardedSuspension
 
         public void Run()
         {
-            foreach (int i in Enumerable.Range(0, 10000))
+            try
             {
-                var req = new Request($"No. {i.ToString()}");
-                Console.WriteLine($"Thread-{Thread.CurrentThread.ManagedThreadId} requests {req.ToString()}");
-                Requests.PutRequest(req);
-                try
+                foreach (int i in Enumerable.Range(0, 10000))
                 {
+                    var req = new Request($"No. {i.ToString()}");
+                    Console.WriteLine($"Thread-{Thread.CurrentThread.ManagedThreadId} requests {req.ToString()}");
+                    Requests.PutRequest(req);
                     Thread.Sleep(Random.Next(1000));
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+            }
+            catch (ThreadInterruptedException e)
+            {
+                Console.WriteLine($"caught ThreadInterruptedException in ClientThread: {e.Message}");
             }
         }
     }
