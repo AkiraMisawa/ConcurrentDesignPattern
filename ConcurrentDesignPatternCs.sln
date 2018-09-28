@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProducerConsumer", "Produce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadWriteLock", "ReadWriteLock\ReadWriteLock.csproj", "{074AB778-2F92-4A60-B2F1-B48F4E5FF554}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPerMessage", "ThreadPerMessage\ThreadPerMessage.csproj", "{68DF98C5-4919-460F-8FB8-54F067E831C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{074AB778-2F92-4A60-B2F1-B48F4E5FF554}.Release|x64.Build.0 = Release|Any CPU
 		{074AB778-2F92-4A60-B2F1-B48F4E5FF554}.Release|x86.ActiveCfg = Release|Any CPU
 		{074AB778-2F92-4A60-B2F1-B48F4E5FF554}.Release|x86.Build.0 = Release|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Debug|x64.Build.0 = Debug|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Debug|x86.Build.0 = Debug|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Release|x64.ActiveCfg = Release|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Release|x64.Build.0 = Release|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Release|x86.ActiveCfg = Release|Any CPU
+		{68DF98C5-4919-460F-8FB8-54F067E831C1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
